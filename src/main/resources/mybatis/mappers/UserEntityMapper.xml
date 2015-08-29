@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.multipless.egogoal.btoc.dao.UserEntityMapper" >
+  <resultMap id="BaseResultMap" type="com.multipless.egogoal.btoc.entity.UserEntity" >
+    <id column="auto_id" property="autoId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_mobile" property="userMobile" jdbcType="VARCHAR" />
+    <result column="vip_card_no" property="vipCardNo" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="detail_address" property="detailAddress" jdbcType="VARCHAR" />
+    <result column="weixin_open_id" property="weixinOpenId" jdbcType="VARCHAR" />
+    <result column="user_level" property="userLevel" jdbcType="VARCHAR" />
+    <result column="user_level_name" property="userLevelName" jdbcType="VARCHAR" />
+    <result column="org_id" property="orgId" jdbcType="BIGINT" />
+    <result column="mall_id" property="mallId" jdbcType="BIGINT" />
+    <result column="identity_card_no" property="identityCardNo" jdbcType="VARCHAR" />
+    <result column="user_email" property="userEmail" jdbcType="VARCHAR" />
+    <result column="license_plate" property="licensePlate" jdbcType="VARCHAR" />
+    <result column="integral" property="integral" jdbcType="INTEGER" />
+    <result column="weixin_nick" property="weixinNick" jdbcType="VARCHAR" />
+    <result column="delete_flag" property="deleteFlag" jdbcType="CHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="period_code" property="periodCode" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="CHAR" />
+    <result column="score_type" property="scoreType" jdbcType="CHAR" />
+    <result column="score" property="score" jdbcType="VARCHAR" />
+    <result column="code_imgurl" property="codeImgurl" jdbcType="VARCHAR" />
+    <result column="channel" property="channel" jdbcType="CHAR" />
+    <result column="finance_com_id" property="financeComId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    auto_id, user_id, user_name, user_mobile, vip_card_no, city, detail_address, weixin_open_id, 
+    user_level, user_level_name, org_id, mall_id, identity_card_no, user_email, license_plate, 
+    integral, weixin_nick, delete_flag, create_time, update_time, period_code, sex, score_type, 
+    score, code_imgurl, channel, finance_com_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_user_info
+    where auto_id = #{autoId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_user_info
+    where auto_id = #{autoId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.multipless.egogoal.btoc.entity.UserEntity" >
+    insert into tb_user_info (auto_id, user_id, user_name, 
+      user_mobile, vip_card_no, city, 
+      detail_address, weixin_open_id, user_level, 
+      user_level_name, org_id, mall_id, 
+      identity_card_no, user_email, license_plate, 
+      integral, weixin_nick, delete_flag, 
+      create_time, update_time, period_code, 
+      sex, score_type, score, code_imgurl, 
+      channel, finance_com_id)
+    values (#{autoId,jdbcType=BIGINT}, #{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{userMobile,jdbcType=VARCHAR}, #{vipCardNo,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{detailAddress,jdbcType=VARCHAR}, #{weixinOpenId,jdbcType=VARCHAR}, #{userLevel,jdbcType=VARCHAR}, 
+      #{userLevelName,jdbcType=VARCHAR}, #{orgId,jdbcType=BIGINT}, #{mallId,jdbcType=BIGINT}, 
+      #{identityCardNo,jdbcType=VARCHAR}, #{userEmail,jdbcType=VARCHAR}, #{licensePlate,jdbcType=VARCHAR}, 
+      #{integral,jdbcType=INTEGER}, #{weixinNick,jdbcType=VARCHAR}, #{deleteFlag,jdbcType=CHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{periodCode,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=CHAR}, #{scoreType,jdbcType=CHAR}, #{score,jdbcType=VARCHAR}, #{codeImgurl,jdbcType=VARCHAR}, 
+      #{channel,jdbcType=CHAR}, #{financeComId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.multipless.egogoal.btoc.entity.UserEntity" >
+    insert into tb_user_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="autoId != null" >
+        auto_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="userMobile != null" >
+        user_mobile,
+      </if>
+      <if test="vipCardNo != null" >
+        vip_card_no,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="detailAddress != null" >
+        detail_address,
+      </if>
+      <if test="weixinOpenId != null" >
+        weixin_open_id,
+      </if>
+      <if test="userLevel != null" >
+        user_level,
+      </if>
+      <if test="userLevelName != null" >
+        user_level_name,
+      </if>
+      <if test="orgId != null" >
+        org_id,
+      </if>
+      <if test="mallId != null" >
+        mall_id,
+      </if>
+      <if test="identityCardNo != null" >
+        identity_card_no,
+      </if>
+      <if test="userEmail != null" >
+        user_email,
+      </if>
+      <if test="licensePlate != null" >
+        license_plate,
+      </if>
+      <if test="integral != null" >
+        integral,
+      </if>
+      <if test="weixinNick != null" >
+        weixin_nick,
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="periodCode != null" >
+        period_code,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="scoreType != null" >
+        score_type,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="codeImgurl != null" >
+        code_imgurl,
+      </if>
+      <if test="channel != null" >
+        channel,
+      </if>
+      <if test="financeComId != null" >
+        finance_com_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="autoId != null" >
+        #{autoId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userMobile != null" >
+        #{userMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="vipCardNo != null" >
+        #{vipCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="detailAddress != null" >
+        #{detailAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="weixinOpenId != null" >
+        #{weixinOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="userLevel != null" >
+        #{userLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="userLevelName != null" >
+        #{userLevelName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=BIGINT},
+      </if>
+      <if test="mallId != null" >
+        #{mallId,jdbcType=BIGINT},
+      </if>
+      <if test="identityCardNo != null" >
+        #{identityCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null" >
+        #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="licensePlate != null" >
+        #{licensePlate,jdbcType=VARCHAR},
+      </if>
+      <if test="integral != null" >
+        #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="weixinNick != null" >
+        #{weixinNick,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null" >
+        #{deleteFlag,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="periodCode != null" >
+        #{periodCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="scoreType != null" >
+        #{scoreType,jdbcType=CHAR},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=VARCHAR},
+      </if>
+      <if test="codeImgurl != null" >
+        #{codeImgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null" >
+        #{channel,jdbcType=CHAR},
+      </if>
+      <if test="financeComId != null" >
+        #{financeComId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.multipless.egogoal.btoc.entity.UserEntity" >
+    update tb_user_info
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userMobile != null" >
+        user_mobile = #{userMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="vipCardNo != null" >
+        vip_card_no = #{vipCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="detailAddress != null" >
+        detail_address = #{detailAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="weixinOpenId != null" >
+        weixin_open_id = #{weixinOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="userLevel != null" >
+        user_level = #{userLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="userLevelName != null" >
+        user_level_name = #{userLevelName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        org_id = #{orgId,jdbcType=BIGINT},
+      </if>
+      <if test="mallId != null" >
+        mall_id = #{mallId,jdbcType=BIGINT},
+      </if>
+      <if test="identityCardNo != null" >
+        identity_card_no = #{identityCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null" >
+        user_email = #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="licensePlate != null" >
+        license_plate = #{licensePlate,jdbcType=VARCHAR},
+      </if>
+      <if test="integral != null" >
+        integral = #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="weixinNick != null" >
+        weixin_nick = #{weixinNick,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag = #{deleteFlag,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="periodCode != null" >
+        period_code = #{periodCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="scoreType != null" >
+        score_type = #{scoreType,jdbcType=CHAR},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=VARCHAR},
+      </if>
+      <if test="codeImgurl != null" >
+        code_imgurl = #{codeImgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null" >
+        channel = #{channel,jdbcType=CHAR},
+      </if>
+      <if test="financeComId != null" >
+        finance_com_id = #{financeComId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where auto_id = #{autoId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.multipless.egogoal.btoc.entity.UserEntity" >
+    update tb_user_info
+    set user_id = #{userId,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      user_mobile = #{userMobile,jdbcType=VARCHAR},
+      vip_card_no = #{vipCardNo,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      detail_address = #{detailAddress,jdbcType=VARCHAR},
+      weixin_open_id = #{weixinOpenId,jdbcType=VARCHAR},
+      user_level = #{userLevel,jdbcType=VARCHAR},
+      user_level_name = #{userLevelName,jdbcType=VARCHAR},
+      org_id = #{orgId,jdbcType=BIGINT},
+      mall_id = #{mallId,jdbcType=BIGINT},
+      identity_card_no = #{identityCardNo,jdbcType=VARCHAR},
+      user_email = #{userEmail,jdbcType=VARCHAR},
+      license_plate = #{licensePlate,jdbcType=VARCHAR},
+      integral = #{integral,jdbcType=INTEGER},
+      weixin_nick = #{weixinNick,jdbcType=VARCHAR},
+      delete_flag = #{deleteFlag,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      period_code = #{periodCode,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=CHAR},
+      score_type = #{scoreType,jdbcType=CHAR},
+      score = #{score,jdbcType=VARCHAR},
+      code_imgurl = #{codeImgurl,jdbcType=VARCHAR},
+      channel = #{channel,jdbcType=CHAR},
+      finance_com_id = #{financeComId,jdbcType=VARCHAR}
+    where auto_id = #{autoId,jdbcType=BIGINT}
+  </update>
+  
+   <select id="getAllUsers" resultMap="BaseResultMap">
+ 	select <include refid="Base_Column_List" /> from tb_user_info
+ </select>
+</mapper>
