@@ -24,4 +24,15 @@ public class UserServiceImpl implements UserService {
 		return userEntityMapper.getAllUsers();
 	}
 
+	@Override
+	public UserEntity selectByPrimaryKey(String userId) {
+		return userEntityMapper.selectByPrimaryKey(userId);
+	}
+
+	@Override
+	public Integer updateUserByUserId(UserEntity userEntity) {
+		int status = userEntityMapper.updateByPrimaryKeySelective(userEntity);
+		userEntity.setScore("111");//断点到这时，status为1，库中的channel还没有变化，说明整个方法是事务控制的
+		return userEntityMapper.updateByPrimaryKeySelective(userEntity);
+	}
 }

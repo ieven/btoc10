@@ -1,0 +1,43 @@
+
+CREATE TABLE `tb_user_info` (
+`user_id`  varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' COMMENT '用户标号' ,
+`user_name`  varchar(128) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '姓名' ,
+`user_mobile`  varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '手机号' ,
+`vip_card_no`  varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '会员卡号' ,
+`city`  varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '城市' ,
+`detail_address`  varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '详细地址' ,
+`weixin_open_id`  varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '微信openId' ,
+`user_level`  varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '用户等级编码' ,
+`user_level_name`  varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '会员等级名称' ,
+`org_id`  bigint(20) NULL DEFAULT NULL COMMENT '集团id' ,
+`mall_id`  bigint(20) NULL DEFAULT NULL COMMENT '门点id' ,
+`identity_card_no`  varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '身份证号' ,
+`user_email`  varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '邮箱' ,
+`license_plate`  varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '车牌号码' ,
+`integral`  int(11) NULL DEFAULT 0 COMMENT '用户积分' ,
+`weixin_nick`  varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '微信昵称' ,
+`delete_flag`  char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '删除标识0-未删除；1-删除' ,
+`create_time`  timestamp NULL DEFAULT '0000-00-00 00:00:00' COMMENT '创建时间' ,
+`update_time`  timestamp NULL DEFAULT '0000-00-00 00:00:00' COMMENT '更新时间' ,
+`auto_id`  bigint(20) NOT NULL AUTO_INCREMENT ,
+`period_code`  varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '分期交易密码' ,
+`sex`  char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '性别：1-男；2-女' ,
+`score_type`  char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '类型：1-积分；2-金额' ,
+`score`  varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '积分/金额' ,
+`code_imgurl`  varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '二维码地址' ,
+`channel`  char(2) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '授信审核通道01-北银消费；02-扫货邦' ,
+`finance_com_id`  varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '信贷公司id' ,
+PRIMARY KEY (`auto_id`),
+UNIQUE INDEX `unique_user_id` USING BTREE (`user_id`)
+)
+ENGINE=InnoDB
+DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci
+COMMENT='用户信息表'
+AUTO_INCREMENT=1
+ROW_FORMAT=COMPACT
+;
+
+
+INSERT INTO `tb_user_info` VALUES ('1620150616190638980525750', '是不是', '15210244082', '0000070092', '', '', 'o86IHjxv1caPV3NzyT3z45i4xLUQ', '01', '缤纷卡', 68, 2015052111363219113, '130101197109060019', '', '', 0, '一米阳光', '0', '2015-6-16 19:06:39', '2015-6-16 19:58:33', 231, NULL, '1', '2', '22', NULL, '1', NULL);
+INSERT INTO `tb_user_info` VALUES ('1620150616202825777488250', '你就会', '13620150616', '0000070095', '', '', 'o86IHjzUHItSiVft2VNDQFnjfkDc', '01', '缤纷卡', 68, 2015052111363219113, '230601198606160059', '', '', 0, '张羽锋', '0', '2015-6-16 20:28:26', '2015-6-16 20:34:17', 234, NULL, '1', '2', '0', NULL, '', NULL);
+INSERT INTO `tb_user_info` VALUES ('1620150616204013120822799', '今天', '15210244088', '0000070102', '', '', 'o86IHjxv1caPV3NzyT3z45i4xLUQ', '01', '缤纷卡', 68, 2015052111363219113, '110112199006200140', '', '', 0, '一米阳光', '0', '2015-6-16 20:40:13', '2015-6-16 21:39:31', 235, NULL, '2', '2', '0', NULL, '', NULL);

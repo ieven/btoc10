@@ -36,11 +36,11 @@
     integral, weixin_nick, delete_flag, create_time, update_time, period_code, sex, score_type, 
     score, code_imgurl, channel, finance_com_id
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from tb_user_info
-    where auto_id = #{autoId,jdbcType=BIGINT}
+    where user_id = #{userId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from tb_user_info
@@ -238,9 +238,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.multipless.egogoal.btoc.entity.UserEntity" >
     update tb_user_info
     <set >
-      <if test="userId != null" >
-        user_id = #{userId,jdbcType=VARCHAR},
-      </if>
       <if test="userName != null" >
         user_name = #{userName,jdbcType=VARCHAR},
       </if>
@@ -317,7 +314,7 @@
         finance_com_id = #{financeComId,jdbcType=VARCHAR},
       </if>
     </set>
-    where auto_id = #{autoId,jdbcType=BIGINT}
+    where user_Id = #{userId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.multipless.egogoal.btoc.entity.UserEntity" >
     update tb_user_info

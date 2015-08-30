@@ -18,4 +18,6 @@ public interface UserEntityMapper {
     int updateByPrimaryKey(UserEntity record);
     
     List<UserEntity> getAllUsers();
+    
+    UserEntity selectByPrimaryKey(String userId);
 }

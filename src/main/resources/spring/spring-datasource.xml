@@ -54,7 +54,7 @@
 
 	<!--那些类的哪些方法参与事务 -->
 	<aop:config>
-		<aop:pointcut id="serviceMethods" expression="execution(* com.multipless.egogoal.btoc.service.impl.UserServiceImpl.*.*(..))" />
+		<aop:pointcut id="serviceMethods" expression="execution(* com.multipless.egogoal.btoc.service.impl.*.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethods" />
 	</aop:config>
 	

@@ -3,6 +3,8 @@ package com.multipless.egogoal.btoc.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.multipless.egogoal.btoc.entity.UserEntity;
+import com.multipless.egogoal.btoc.service.UserService;
 import com.multipless.egogoal.btoc.utils.Result;
 
 /**
@@ -21,8 +25,10 @@ import com.multipless.egogoal.btoc.utils.Result;
 @RequestMapping("/btoc/front/user")
 @SessionAttributes({"userId","userName"})
 public class UserController {
-
-	//http://localhost:8080/btoc01/btoc/front/user/list.json
+	private static final Logger LOG = Logger.getLogger(UserController.class);
+	@Autowired
+	private UserService userService;
+	//http://localhost:8080/btoc01/btoc/front/user/list1.json
 	/**
 	 * 列表页1，无参数传递,返回Json格式
 	 */
@@ -34,6 +40,7 @@ public class UserController {
 		list.add("222");
 		list.add("333");
 		list.add("444");
+		LOG.info("haha");
 		return Result.success(list);
 		//{"resCode":1,"msg":"success","data":["111","222","333","444"]}
 	}
@@ -93,5 +100,12 @@ public class UserController {
 		model.addAttribute("userId","222");
 		model.addAttribute("userName","lei");
 		return "showVariable2";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "list7")
+	public Result list7(ModelMap model) {
+		List<UserEntity> allUsers = userService.getAllUsers();
+		return Result.success(allUsers);
 	}
 }

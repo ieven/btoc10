@@ -29,4 +29,24 @@ public class TestUser {
 		List<UserEntity> allUsers = userService.getAllUsers();
 		System.out.println(allUsers);
 	}
+	
+//	@Test
+	public void testget(){
+		String userId = "1620150616190638980525750";
+		UserEntity user = userService.selectByPrimaryKey(userId);
+		System.out.println(user);
+	}
+	
+	/**
+	 *测试updateUserByUserId整个方法的事务控制
+	 */
+//	@Test
+	public void testupdate(){
+		String userId = "1620150616190638980525750";
+		UserEntity userEntity = new UserEntity();
+		userEntity.setUserId(userId);
+		userEntity.setChannel("3");
+		Integer status = userService.updateUserByUserId(userEntity);
+		System.out.println(status);
+	}
 }
