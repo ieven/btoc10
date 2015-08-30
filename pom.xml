@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.multipless.egogoal</groupId>
-	<artifactId>btoc02</artifactId>
+	<artifactId>btoc</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>btoc02 Maven Webapp</name>
+	<name>btoc Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
 		<dependency>
@@ -154,6 +154,6 @@
 				<version>1.3.2</version>
 			</plugin>
 		</plugins>
-		<finalName>btoc02</finalName>
+		<finalName>btoc</finalName>
 	</build>
 </project>
