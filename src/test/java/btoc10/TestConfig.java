@@ -1,4 +1,4 @@
-package btoc02;
+package btoc10;
 
 import com.multipless.egogoal.btoc.utils.PropsLoader;
 

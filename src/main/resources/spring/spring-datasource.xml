@@ -31,13 +31,53 @@
 		<!-- 每个分区释放链接助理进程的数量，默认值：3，除非你的一个数据库连接的时间内做了很多工作，不然过多的助理进程会影响你的性能 -->
 		<property name="releaseHelperThreads" value="${aliLibrary.db.releaseHelperThreads}" />
 	</bean>
-
-	<bean id="dataSource" parent="parentDataSource">
+	
+	<!-- 主数据源-->  
+	<bean id="masterDataSource" parent="parentDataSource">
 		<property name="jdbcUrl" value="${master.jdbc.url}" />
 		<property name="username" value="${master.jdbc.username}" />
 		<property name="password" value="${master.jdbc.password}" />
 	</bean>
-
+	<!-- 从数据源-->  
+	<bean id="slaveDataSource" parent="parentDataSource">
+		<property name="jdbcUrl" value="${slave.jdbc.url}" />
+		<property name="username" value="${slave.jdbc.username}" />
+		<property name="password" value="${slave.jdbc.password}" />
+	</bean>
+	
+	<!-- 获取数据源 -->
+	    <bean id="dataSource" class="Open Declaration com.multipless.egogoal.btoc.aop.DataSourceSwitch.DynamicDataSource">  
+        <property name="targetDataSources">  
+            <map key-type="java.lang.String">  
+                <entry key="slave" value-ref="slaveDataSource" />  
+            </map>  
+        </property>  
+        <property name="defaultTargetDataSource" ref="masterDataSource" />  
+    </bean>  
+    
+	<!-- 切换数据源 -->
+	<bean id="dataSourceAdvice" class="com.multipless.egogoal.btoc.aop.DataSourceSwitch.DataSourceAdvice">
+		<property name="methodPrefix">
+			<list>
+				<value>add</value>
+				<value>insert</value>
+				<value>change</value>
+				<value>validate</value>
+				<value>cancel</value>
+				<value>order</value>
+				<value>create</value>
+				<value>save</value>
+				<value>edit</value>
+				<value>update</value>
+				<value>delete</value>
+				<value>remove</value>
+				<value>invoke</value>
+			</list>
+		</property>
+	</bean>
+	<aop:config>
+		<aop:advisor pointcut="execution(* com.multipless.egogoal.btoc.service.impl.*.*(..))" advice-ref="dataSourceAdvice"/>
+	</aop:config>
 
 
 	<!--配置事务的传播特性 -->
