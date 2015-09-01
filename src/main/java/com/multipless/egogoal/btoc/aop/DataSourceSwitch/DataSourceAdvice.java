@@ -18,11 +18,11 @@ public class DataSourceAdvice implements MethodBeforeAdvice, AfterReturningAdvic
 	 */
 	@Override
 	public void before(Method method, Object[] args, Object target) throws Throwable {
-		System.out.println("point:" + target.getClass().getName()+"class"+method.getName()+"method");
+		System.out.println("==>point:" + target.getClass().getName()+"."+method.getName());
 		int i = 0;
 		boolean flag = false;
-		while(i < this.methodPrefix.length - 1){
-			flag = (flag) || (method.getName().startsWith(this.methodPrefix[i]))||(method.getName().startsWith(this.methodPrefix[(i+1)]));
+		while(!flag && i < this.methodPrefix.length - 1){
+			flag = (method.getName().startsWith(this.methodPrefix[i]))||(method.getName().startsWith(this.methodPrefix[(i+1)]));
 			i++;
 		}
 		if(flag){
@@ -38,16 +38,14 @@ public class DataSourceAdvice implements MethodBeforeAdvice, AfterReturningAdvic
 	public void afterReturning(Object arg0, Method method, Object[] args, Object target) throws Throwable {
 	}
 	
+	/**
+	 *异常处理，切换到主库
+	 */
 	public void afterThrowing(Method method, Object[] args, Object target, Exception ex) throws Throwable {
 		DataSourceSwitcher.setMaster();
 		System.out.println("finde exception, switch to master");
 	}
 	
-
-	public String[] getMethodPrefix() {
-		return this.methodPrefix;
-	}
-
 	public void setMethodPrefix(String[] methodPrefix) {
 		this.methodPrefix = methodPrefix;
 	}
@@ -56,11 +54,14 @@ public class DataSourceAdvice implements MethodBeforeAdvice, AfterReturningAdvic
 public static void main(String[] args) {
 	String[] methodPrefix = {"add","insert","change","validate","cancel","create","save","edit","update","delete","remove","invoke"};
 	String methodName = "createUser";
+	boolean flag = false;
 	int i = 0;
-	while(i <methodPrefix.length-1){
-		boolean flag = methodName.startsWith(methodPrefix[i]);
-		System.out.println(flag);
+	while(!flag && i <methodPrefix.length-1){
+		System.out.println("111"+flag);
+		flag =(flag) || (methodName.startsWith(methodPrefix[i]))||(methodName.startsWith(methodPrefix[(i+1)]));
+		System.out.println("222"+flag);
 		i++;
 	}
+	System.out.println("last flag"+ flag);
 }
 }

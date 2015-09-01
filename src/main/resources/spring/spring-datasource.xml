@@ -46,7 +46,7 @@
 	</bean>
 	
 	<!-- 获取数据源 -->
-	    <bean id="dataSource" class="Open Declaration com.multipless.egogoal.btoc.aop.DataSourceSwitch.DynamicDataSource">  
+	    <bean id="dataSource" class="com.multipless.egogoal.btoc.aop.DataSourceSwitch.DynamicDataSource">  
         <property name="targetDataSources">  
             <map key-type="java.lang.String">  
                 <entry key="slave" value-ref="slaveDataSource" />  

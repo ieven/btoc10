@@ -10,7 +10,7 @@ import com.multipless.egogoal.btoc.entity.UserEntity;
  */
 public interface UserService{
 	List<UserEntity> getAllUsers();
-	UserEntity selectByPrimaryKey(String autoId);
+	UserEntity selectByPrimaryKey(String userId);
 	
 	/**
 	 *更新用户表，测试aop的事务控制配置是否起效果

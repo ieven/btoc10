@@ -108,4 +108,25 @@ public class UserController {
 		List<UserEntity> allUsers = userService.getAllUsers();
 		return Result.success(allUsers);
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "list8")
+	public Result list8(ModelMap model) {
+		UserEntity user = new UserEntity();
+		user.setUserId("1620150727200953081403658");
+		user.setScoreType("1");
+		user.setUserMobile("15321870005");
+		Integer status = userService.updateUserByUserId(user);
+		return Result.success(status);
+	}
+	
+	
+	
+	@ResponseBody
+	@RequestMapping(value = "list9")
+	public Result list9(ModelMap model) {
+		String userId = "1620150727200953081403658";
+		UserEntity userEntity = userService.selectByPrimaryKey(userId);
+		return Result.success(userEntity);
+	}
 }

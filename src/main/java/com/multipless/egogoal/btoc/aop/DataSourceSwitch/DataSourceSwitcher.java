@@ -8,7 +8,7 @@ import org.springframework.util.Assert;
  * @date 2015年9月1日
  */
 public class DataSourceSwitcher {
-	private static final ThreadLocal contextHolder = new ThreadLocal();
+	private static final ThreadLocal<String> contextHolder = new ThreadLocal<String>();
 
 	private static void setDataSource(String dataSource) {
 		Assert.notNull(dataSource, "dataSource cannot be null");
@@ -24,7 +24,7 @@ public class DataSourceSwitcher {
 	}
 	
 	public static String getDataSource() {
-		return (String) contextHolder.get();
+		return contextHolder.get();
 	}
 	private static void clearDataSource() {
 		contextHolder.remove();
