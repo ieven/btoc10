@@ -26,10 +26,10 @@ public class DataSourceAdvice implements MethodBeforeAdvice, AfterReturningAdvic
 			i++;
 		}
 		if(flag){
-			System.out.println("switch to master");
+			System.out.println("==>switch to master");
 			DataSourceSwitcher.setMaster();
 		}else{
-			System.out.println("switch to slaver");
+			System.out.println("==>switch to slaver");
 			DataSourceSwitcher.setSlave();
 		}
 	}

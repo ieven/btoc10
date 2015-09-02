@@ -122,6 +122,9 @@ public class UserController {
 	
 	
 	
+	/**
+	 *启动项目后，访问http://localhost:8089/btoc10/btoc/front/user/list8.json和list9.json。可以看到控制台输出切换数据库的日志
+	 */
 	@ResponseBody
 	@RequestMapping(value = "list9")
 	public Result list9(ModelMap model) {
